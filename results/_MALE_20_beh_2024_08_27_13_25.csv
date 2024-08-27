@@ -1,0 +1,4 @@
+n,block_type,block_n,binding,trial_type,acc,rt,order,stimulus,answers,correct_answer
+1,training,1,True,identical,0,0.4083145000040531,ABC,"['A/B', 'B|C']","['B|C', 'A|B', 'A\\C']",B|C
+2,training,1,True,two_pairs,1,2.944176600081846,CAB,"['A/B', 'A|C']","['C/A', 'B|C', 'B\\C']",B\C
+3,training,1,False,identical,0,2.4225175000028685,CAB,"['A/B', 'A\\C']","['A/C', 'A\\C', 'B/C']",A\C

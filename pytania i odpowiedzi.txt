@@ -1,0 +1,30 @@
+1) "Bodźcami mogą być dowolne obiekty" - co znaczy dowolne obiekty? Jakie konkretnie? Czy takim obiektem może być?
+
+Literki, cyferki, obrazki, wszystko co ma rozmiar kilkadziesiąt piksli na kilkadziesiąt piksli (może po prostu obrazki, zawsze na obrazku może być literka albo cyferka)
+
+2) "dla pary A/B losowane jest C\B albo A\C, a dla A\B losowane jest C/B albo A/C" - czy badanemu nie będzie łatwo zauważyć, że zawsze musi odwrócić drugą parę, co ułatwia zadania?
+
+Miejmy nadzieję, że nie. W dotychczasowych wersjach zadania, mimo że wydawały się banalne, poprawność nie była zbyt wysoka
+
+3) "W warunku bez wiązań, dla A/B losowane są B|C albo A|C, a dla A\B losowane są C|B albo C|A." - tutaj raz trzeba obracać mentalnie a raz nie. Tak ma być?
+
+Jest ok, chodziło o to, żeby była analogiczna kolejność jak dla warunku z wiązaniami.
+
+4) Jak ma wyglądać trening?
+
+Tak samo jak główne zadanie, tylko może X = 10, Y = 10, z informacją zwrotną o poprawności, dwie sekwencje po 10 prób.
+
+5) Rozumiem, że mieszamy ze sobą warunki z i bez wiązań?
+
+Tak jest, mieszamy wszystko
+
+6) Czy bodźce są tylko 3, czy w każdej próbie losujemy z jakiejś większej puli? Jeżeli z większej, to czy mamy jakieś ograniczenia (np. bodźce z nie mogą się powtarzać w kolejnych trialach)
+
+Tak, tak, oczywiście losujemy z większej puli i bodźce nie powinny się powtarzać zaraz po sobie. Nie chcemy interferencji proaktywnej.
+
+Kwadrat, owal, trójkąt prostokątny
+Romb, koło, trójkąt równoboczny
+Prostokąt (wertykalnie), sześciokąt, trójkąt ostrokątny
+Prostokąt horyzontalnie, gwiazda pięcioramienna, trapez
+
+Takie cztery zestawy, starałem się, żeby figury w ramach każdego zestawu były proste ale maksymalnie dystynktywne.
