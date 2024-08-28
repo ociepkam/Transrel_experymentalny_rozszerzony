@@ -32,6 +32,11 @@ fixation_color: black
 fixation_text: +
 fixation_time: 1
 
+# feedback
+feedback_time: 2
+feedback_size: 28
+feedback_color: black
+
 # trial
 elements_size: 28
 distance_in_pair: [15, 0]

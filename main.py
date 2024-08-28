@@ -83,19 +83,25 @@ def run_block(block, config, win, stimulus_all, stimulus_type, fixation, clock, 
         win.callOnFlip(event.clearEvents)
         win.flip()
 
-        if block_type == "training":
-            pass
-            # TODO: feedback
+        if key:
+            acc = 1 if trial_raw["pairs"][config["reaction_keys"].index(key)] == trial_raw["answer"] else 0
 
-        # wait
-        wait_time = config[f"{block_type}_wait_time"] + random.random() * config[f"{block_type}_wait_jitter"]
-        while clock.getTime() < wait_time:
-            check_exit()
+        if block_type == "training":
+            if acc == 1:
+                feedback_text = u'Poprawna odpowied\u017A'
+            elif acc == 0:
+                feedback_text = u'Odpowied\u017A niepoprawna'
+            else:
+                feedback_text = u'Nie udzieli\u0142e\u015B odpowiedzi'
+
+            feedback = visual.TextStim(win, text=feedback_text, color=config["feedback_color"], height=config["feedback_size"])
+            feedback.setAutoDraw(True)
+            win.flip()
+            time.sleep(config["feedback_time"])
+            feedback.setAutoDraw(False)
             win.flip()
 
         # results
-        if key:
-            acc = 1 if trial_raw["pairs"][config["reaction_keys"].index(key)] == trial_raw["answer"] else 0
         trial_results = {"n": N,
                          "block_type": block_type,
                          "block_n": block_idx,
@@ -108,6 +114,12 @@ def run_block(block, config, win, stimulus_all, stimulus_type, fixation, clock, 
                          "answers": trial_raw["pairs"],
                          "correct_answer": trial_raw["answer"]}
         RESULTS.append(trial_results)
+
+        # wait
+        wait_time = config[f"{block_type}_wait_time"] + random.random() * config[f"{block_type}_wait_jitter"]
+        while clock.getTime() < wait_time:
+            check_exit()
+            win.flip()
 
 
 def main():
@@ -139,7 +151,7 @@ def main():
                   stimulus_type=config["stimulus_type"],
                   fixation=fixation,
                   clock=clock,
-                  block_idx=block_idx+1,
+                  block_idx=block_idx + 1,
                   block_type="training")
 
         if block_idx < config["training_n_blocks"] - 1:
@@ -159,7 +171,7 @@ def main():
                   stimulus_type=config["stimulus_type"],
                   fixation=fixation,
                   clock=clock,
-                  block_idx=block_idx+1,
+                  block_idx=block_idx + 1,
                   block_type="experiment")
 
         if block_idx < config["experiment_n_blocks"] - 1:
