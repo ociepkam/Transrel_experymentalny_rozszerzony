@@ -125,7 +125,7 @@ def run_block(block, config, win, stimulus_all, stimulus_type, fixation, clock, 
 def main():
     global PART_ID
     config = load_config()
-    info, PART_ID = part_info()
+    #info, PART_ID = part_info()
 
     screen_res = dict(get_screen_res())
     win = visual.Window(list(screen_res.values()), fullscr=True, monitor='testMonitor', units='pix', screen=0,

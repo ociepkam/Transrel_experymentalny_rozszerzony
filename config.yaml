@@ -38,8 +38,9 @@ feedback_size: 28
 feedback_color: black
 
 # trial
-elements_size: 28
-distance_in_pair: [15, 0]
+elements_size: 50
+images_size: 50
+distance_in_pair: [30, 0]
 distance_between_stim_pairs: [50, 0]
 distance_between_answer_pairs: [50, 0]
 stimulus_pos: [0, 100]

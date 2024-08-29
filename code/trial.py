@@ -1,6 +1,6 @@
 import os
 from copy import deepcopy
-from psychopy.visual import TextStim
+from psychopy.visual import TextStim, ImageStim
 import numpy as np
 import random
 
@@ -29,7 +29,37 @@ def prepare_stim(win, trail_raw, config, stimulus_type):
                 pos[1] += config["distance_in_pair"][1]
             pos[0] += config["distance_between_answer_pairs"][0]
             pos[1] += config["distance_between_answer_pairs"][1]
-        return trial
+    elif stimulus_type == "image":
+        pos = [config["stimulus_pos"][0] - config["distance_between_stim_pairs"][0] / 2 - config["distance_in_pair"][0],
+               config["stimulus_pos"][1] - config["distance_between_stim_pairs"][1] / 2 - config["distance_in_pair"][1]]
+        for i, pair in enumerate(trial["stimulus"]):
+            for c, elem in enumerate(pair):
+                print(trial["stimulus"][i][c], i, c)
+                if c == 0 or c == 2:
+                    trial["stimulus"][i][c] = ImageStim(win=win, image=elem, size=config["images_size"], pos=pos)
+                else:
+                    trial["stimulus"][i][c] = TextStim(win, color=config["text_color"], text=elem, height=config["elements_size"], pos=pos)
+                pos[0] += config["distance_in_pair"][0]
+                pos[1] += config["distance_in_pair"][1]
+            pos[0] += config["distance_between_stim_pairs"][0]
+            pos[1] += config["distance_between_stim_pairs"][1]
+
+        pos = [config["answers_pos"][0] - config["distance_between_answer_pairs"][0] * 1.5 - config["distance_in_pair"][0],
+               config["answers_pos"][1] - config["distance_between_answer_pairs"][1] * 1.5 - config["distance_in_pair"][1]]
+        for i, pair in enumerate(trial["pairs"]):
+            for c, elem in enumerate(pair):
+                if c == 0 or c == 2:
+                    trial["pairs"][i][c] = ImageStim(win=win, image=elem, size=config["images_size"], pos=pos)
+                else:
+                    trial["pairs"][i][c] = TextStim(win, color=config["text_color"], text=elem, height=config["elements_size"], pos=pos)
+                pos[0] += config["distance_in_pair"][0]
+                pos[1] += config["distance_in_pair"][1]
+            pos[0] += config["distance_between_answer_pairs"][0]
+            pos[1] += config["distance_between_answer_pairs"][1]
+        pass
+    else:
+        raise Exception(f"stimulus_type == {stimulus_type} is not implemented")
+    return trial
 
 
 def replace_stimulus_in_pair(pair, new_stimulus):
